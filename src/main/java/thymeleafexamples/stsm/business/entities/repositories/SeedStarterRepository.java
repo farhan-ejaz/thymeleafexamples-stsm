@@ -20,10 +20,12 @@
 package thymeleafexamples.stsm.business.entities.repositories;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.stereotype.Repository;
 import thymeleafexamples.stsm.business.entities.SeedStarter;
+import thymeleafexamples.stsm.business.entities.Type;
 
 
 @Repository
@@ -35,6 +37,12 @@ public class SeedStarterRepository {
     
     public SeedStarterRepository() {
         super();
+        SeedStarter sample = new SeedStarter();
+        sample.setDatePlanted(new Date());
+        sample.setCovered(true);
+        sample.setId(101);
+        sample.setType(Type.PLASTIC);
+        seedStarters.add(sample);
     }
     
     

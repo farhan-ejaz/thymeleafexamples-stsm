@@ -3,7 +3,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 
   <head>
-    <title>Spring Thyme Seed Starter Manager</title>
+    <title>Mobile Shop</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <link rel="stylesheet" type="text/css" media="all" href="../../css/stsm.css" th:href="@{/css/stsm.css}"/>
   </head>
@@ -17,16 +17,16 @@
     
     <div class="seedstarterlist" th:unless="${#lists.isEmpty(allSeedStarters)}">
     
-      <h2 th:text="#{title.list}">List of Seed Starters</h2>
+      <h2 th:text="#{title.list}">List of Phones</h2>
       
       <table>
         <thead>
           <tr>
             <th th:text="#{seedstarter.datePlanted}">Date Planted</th>
-            <th th:text="#{seedstarter.covered}">Covered</th>
+            <th th:text="#{seedstarter.covered}">Model</th>
             <th th:text="#{seedstarter.type}">Type</th>
             <th th:text="#{seedstarter.features}">Features</th>
-            <th th:text="#{seedstarter.rows}">Rows</th>
+            <th th:text="#{seedstarter.rows}">Price</th>
           </tr>
         </thead>
         <tbody>
@@ -56,9 +56,9 @@
     </div>
 
 
-    <div>
+   <!-- <div>
     
-      <h2 th:text="#{title.new}">Add new Seed Starter</h2>
+      <h2 th:text="#{title.new}">Add new</h2>
 
       <form action="#" th:action="@{/seedstartermng}" th:object="${seedStarter}" method="post">
     
@@ -141,7 +141,7 @@
           
       </form>
         
-    </div>
+    </div>-->
 
   </body>
 </html>
