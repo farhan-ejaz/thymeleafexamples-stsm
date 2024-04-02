@@ -81,7 +81,7 @@ public class SeedStarterMngController {
     public List<Phone> populateSeedStarters() {
     	List<Phone> phones = this.phoneService.findAll();
     	if(phones == null || phones.size()==0) {
-    		this.phoneService.
+    		this.phoneService.seed();
     	}
         return this.phoneService.findAll();
     }
