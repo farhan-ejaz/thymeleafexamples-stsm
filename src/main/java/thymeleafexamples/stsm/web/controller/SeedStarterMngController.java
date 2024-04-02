@@ -21,9 +21,8 @@ package thymeleafexamples.stsm.web.controller;
 
 import java.util.Arrays;
 import java.util.Calendar;
+import java.util.Iterator;
 import java.util.List;
-
-import jakarta.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -31,11 +30,15 @@ import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import jakarta.servlet.http.HttpServletRequest;
 import thymeleafexamples.stsm.business.entities.Feature;
+import thymeleafexamples.stsm.business.entities.Phone;
 import thymeleafexamples.stsm.business.entities.Row;
 import thymeleafexamples.stsm.business.entities.SeedStarter;
 import thymeleafexamples.stsm.business.entities.Type;
 import thymeleafexamples.stsm.business.entities.Variety;
+import thymeleafexamples.stsm.business.services.PhoneService;
 import thymeleafexamples.stsm.business.services.SeedStarterService;
 import thymeleafexamples.stsm.business.services.VarietyService;
 
@@ -50,7 +53,8 @@ public class SeedStarterMngController {
     @Autowired
     private SeedStarterService seedStarterService;
     
-    
+    @Autowired
+    private PhoneService phoneService;
     
     public SeedStarterMngController() {
         super();
@@ -74,8 +78,9 @@ public class SeedStarterMngController {
     }
     
     @ModelAttribute("allSeedStarters")
-    public List<SeedStarter> populateSeedStarters() {
-        return this.seedStarterService.findAll();
+    public List<Phone> populateSeedStarters() {
+    	
+        return this.phoneService.findAll();
     }
     
     

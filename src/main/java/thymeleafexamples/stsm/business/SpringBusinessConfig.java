@@ -19,17 +19,32 @@
  */
 package thymeleafexamples.stsm.business;
 
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
+import org.springframework.data.mongodb.MongoDatabaseFactory;
+import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.data.mongodb.core.SimpleMongoClientDatabaseFactory;
 
 @Configuration
 @ComponentScan
+@PropertySource("classpath:application.properties")
 public class SpringBusinessConfig {
-
+	@Value("${spring.data.mongodb.uri}")
+	String connectionString;
     public SpringBusinessConfig() {
         super();
     }
 
     // Nothing else to be configured here: component scanning will do everything needed
+	public @Bean MongoDatabaseFactory mongoDatabaseFactory() {
+		//System.out.println("CONNSTR--->" + connectionString);
+		return new SimpleMongoClientDatabaseFactory(connectionString);
+	}
 
+	public @Bean MongoTemplate mongoTemplate() {
+		return new MongoTemplate(mongoDatabaseFactory());
+	}
 }

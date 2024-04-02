@@ -23,29 +23,24 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import thymeleafexamples.stsm.business.entities.SeedStarter;
-import thymeleafexamples.stsm.business.entities.repositories.SeedStarterRepository;
+
+import thymeleafexamples.stsm.business.entities.Phone;
+import thymeleafexamples.stsm.business.entities.repositories.PhoneRepository;
 
 @Service
-public class SeedStarterService {
+public class PhoneService {
     
     @Autowired
-    private SeedStarterRepository seedstarterRepository; 
+    private PhoneRepository phoneRepository; 
     
     
-    public SeedStarterService() {
+    public PhoneService() {
         super();
     }
     
-    
-    
-    public List<SeedStarter> findAll() {
-    	
-        return this.seedstarterRepository.findAll();
-    }
-
-    public void add(final SeedStarter seedStarter) {
-        this.seedstarterRepository.add(seedStarter);
+    public List<Phone> findAll() {
+    	this.phoneRepository.insert();
+        return this.phoneRepository.findAll();
     }
     
 }
