@@ -79,7 +79,10 @@ public class SeedStarterMngController {
     
     @ModelAttribute("allSeedStarters")
     public List<Phone> populateSeedStarters() {
-    	
+    	List<Phone> phones = this.phoneService.findAll();
+    	if(phones == null || phones.size()==0) {
+    		this.phoneService.
+    	}
         return this.phoneService.findAll();
     }
     

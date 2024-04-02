@@ -39,8 +39,10 @@ public class PhoneService {
     }
     
     public List<Phone> findAll() {
-    	this.phoneRepository.insert();
         return this.phoneRepository.findAll();
     }
     
+    public void seed() {
+    	this.phoneRepository.insert();
+    }
 }
