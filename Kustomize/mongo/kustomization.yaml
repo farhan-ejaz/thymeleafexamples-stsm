@@ -1,8 +1,9 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
-  - mongodb-client.yaml
+  #- mongodb-client.yaml
   - mongodb-deployment.yaml
+  - mongodb-cluster-svc.yaml
   - mongodb-nodeport-svc.yaml
   - mongodb-pv.yaml
   - mongodb-pvc.yaml
