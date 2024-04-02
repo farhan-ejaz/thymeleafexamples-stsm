@@ -19,13 +19,11 @@ public class PhoneRepository {
 
 	public void insert() {
 		//System.out.println("CREATE INSTANCE");
-		// MongoOperations mongoOps = new MongoTemplate(new
-		// SimpleMongoClientDbFactory(MongoClients.create(), "database"));
-
-		//Phone p = new Phone();
-		//p.setFeatures("NFC, Bluetooth, Gorilla Glass");
-		//p.setModel("iPhone 13 SE");
-		//p.setPrice(220);
+		
+		Phone p = new Phone();
+		p.setFeatures("NFC, Bluetooth, Gorilla Glass");
+		p.setModel("iPhone 13 SE");
+		p.setPrice(220);
 
 		// Insert is used to initially store the object into the database.
 		//mongoTemplate.insert(p);
