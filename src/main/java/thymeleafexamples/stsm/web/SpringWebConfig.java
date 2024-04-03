@@ -63,22 +63,6 @@ public class SpringWebConfig implements WebMvcConfigurer, ApplicationContextAwar
 		return messageSource;
 	}
 
-	/*
-	 * Add formatter for class {@link
-	 * thymeleafexamples.stsm.business.entities.Variety} and {@link java.util.Date}
-	 * in addition to the one registered by default
-	 */
-	/*
-	 * @Override public void addFormatters(final FormatterRegistry registry) {
-	 * WebMvcConfigurer.super.addFormatters(registry);
-	 * registry.addFormatter(varietyFormatter());
-	 * registry.addFormatter(dateFormatter()); }
-	 * 
-	 * @Bean public VarietyFormatter varietyFormatter() { return new
-	 * VarietyFormatter(); }
-	 * 
-	 * @Bean public DateFormatter dateFormatter() { return new DateFormatter(); }
-	 */
 	/* **************************************************************** */
 	/* THYMELEAF-SPECIFIC ARTIFACTS */
 	/* TemplateResolver <- TemplateEngine <- ViewResolver */

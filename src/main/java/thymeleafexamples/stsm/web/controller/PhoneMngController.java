@@ -33,10 +33,10 @@ import thymeleafexamples.stsm.business.services.PhoneService;
 
 
 @Controller
-public class SeedStarterMngController {
+public class PhoneMngController {
 
 
-    private static final String INDEX_PAGE = "seedstartermng";
+    private static final String INDEX_PAGE = "index";
 
     @Autowired
     private PhoneService phoneService;
@@ -47,12 +47,12 @@ public class SeedStarterMngController {
     @Value("${name}")
     private String name;
     
-    public SeedStarterMngController() {
+    public PhoneMngController() {
         super();
     }
     
-    @ModelAttribute("allSeedStarters")
-    public List<Phone> populateSeedStarters() {
+    @ModelAttribute("allPhones")
+    public List<Phone> populatePhones() {
     	List<Phone> phones = this.phoneService.findAll();
     	if(phones == null || phones.size()==0) {
     		this.phoneService.seed();

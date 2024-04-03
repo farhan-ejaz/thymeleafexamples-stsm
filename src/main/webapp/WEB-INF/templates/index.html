@@ -15,20 +15,20 @@
            th:src="@{${'/images/' + key + '.png'}}" th:alt-title="|${name} search service|"/>           
     </div>
     
-    <div class="seedstarterlist" th:unless="${#lists.isEmpty(allSeedStarters)}">
+    <div class="seedstarterlist" th:unless="${#lists.isEmpty(allPhones)}">
          
       <h2 th:text="|List of ${name} phones|"></h2>
            
       <table>
         <thead>
           <tr>
-            <th th:text="#{seedstarter.model}">Model</th>
-            <th th:text="#{seedstarter.price}">Price</th>
-            <th th:text="#{seedstarter.features}">Features</th>
+            <th th:text="#{phone.model}">Model</th>
+            <th th:text="#{phone.price}">Price</th>
+            <th th:text="#{phone.features}">Features</th>
           </tr>
         </thead>
         <tbody>
-          <tr th:each="sb : ${allSeedStarters}">
+          <tr th:each="sb : ${allPhones}">
             <td th:text="${{sb.model}}">13/01/2011</td>
             <td th:text="${{sb.price}}">0</td>
             <td th:text="${{sb.features}}"></td>
