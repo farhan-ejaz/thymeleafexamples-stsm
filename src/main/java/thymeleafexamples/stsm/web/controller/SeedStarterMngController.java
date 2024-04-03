@@ -20,27 +20,20 @@
 package thymeleafexamples.stsm.web.controller;
 
 import java.util.Arrays;
-import java.util.Calendar;
-import java.util.Iterator;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.ModelMap;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
-import jakarta.servlet.http.HttpServletRequest;
 import thymeleafexamples.stsm.business.entities.Feature;
 import thymeleafexamples.stsm.business.entities.Phone;
-import thymeleafexamples.stsm.business.entities.Row;
-import thymeleafexamples.stsm.business.entities.SeedStarter;
 import thymeleafexamples.stsm.business.entities.Type;
 import thymeleafexamples.stsm.business.entities.Variety;
 import thymeleafexamples.stsm.business.services.PhoneService;
-import thymeleafexamples.stsm.business.services.SeedStarterService;
 import thymeleafexamples.stsm.business.services.VarietyService;
 
 
@@ -48,11 +41,10 @@ import thymeleafexamples.stsm.business.services.VarietyService;
 public class SeedStarterMngController {
 
 
-    @Autowired
+    private static final String INDEX_PAGE = "seedstartermng";
+
+	@Autowired
     private VarietyService varietyService;
-    
-    @Autowired
-    private SeedStarterService seedStarterService;
     
     @Autowired
     private PhoneService phoneService;
@@ -95,49 +87,19 @@ public class SeedStarterMngController {
     
     @ModelAttribute("key")
     public String key() {
-    	System.out.println("===== KEY =====" + this.key);
+    	System.out.println("KEY =====>>> " + this.key);
         return this.key;
     }
     
     @ModelAttribute("name")
     public String name() {
-    	System.out.println("===== NAME =====" + this.name);
+    	System.out.println("NAME =====>>> " + this.name);
         return this.name;
     }
     
-    @RequestMapping({"/","/seedstartermng"})
-    public String showSeedstarters(final SeedStarter seedStarter) {
-        seedStarter.setDatePlanted(Calendar.getInstance().getTime());
-        return "seedstartermng";
+    @RequestMapping(value = "/" , method = RequestMethod.GET)
+    public String testApp() throws Exception{
+        return INDEX_PAGE;
     }
-    
-    
-    
-    @RequestMapping(value="/seedstartermng", params={"save"})
-    public String saveSeedstarter(final SeedStarter seedStarter, final BindingResult bindingResult, final ModelMap model) {
-        if (bindingResult.hasErrors()) {
-            return "seedstartermng";
-        }
-        this.seedStarterService.add(seedStarter);
-        model.clear();
-        return "redirect:/seedstartermng";
-    }
-    
-
-    
-    @RequestMapping(value="/seedstartermng", params={"addRow"})
-    public String addRow(final SeedStarter seedStarter, final BindingResult bindingResult) {
-        seedStarter.getRows().add(new Row());
-        return "seedstartermng";
-    }
-    
-    
-    @RequestMapping(value="/seedstartermng", params={"removeRow"})
-    public String removeRow(final SeedStarter seedStarter, final BindingResult bindingResult, final HttpServletRequest req) {
-        final Integer rowId = Integer.valueOf(req.getParameter("removeRow"));
-        seedStarter.getRows().remove(rowId.intValue());
-        return "seedstartermng";
-    }
-
 
 }
