@@ -15,7 +15,7 @@ spec:
         app: serviceC
     spec:
       containers:
-      - image: farhanejaz/mtechphoneshop:debug
+      - image: farhanejaz/mtechphoneshop:latest
         name: servicec
         env:
         - name: MONGO_CONNSTR

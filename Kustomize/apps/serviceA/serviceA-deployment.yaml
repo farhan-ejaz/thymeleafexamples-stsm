@@ -15,7 +15,7 @@ spec:
         app: serviceA
     spec:
       containers:
-      - image: farhanejaz/mtechphoneshop:debug
+      - image: farhanejaz/mtechphoneshop:latest
         name: servicea
         env:
         - name: MONGO_CONNSTR

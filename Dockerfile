@@ -1,8 +1,3 @@
-#FROM tomcat
-#EXPOSE 8080
-
-# https://www.geeksforgeeks.org/how-to-write-dockerfile-for-tomcat/
-
 # Use a minimal base image
 FROM ubuntu:20.04
 
@@ -10,13 +5,7 @@ FROM ubuntu:20.04
 ENV TOMCAT_VERSION 10.1.20
 
 # Install dependencies
-RUN apt-get update && apt-get install -y openjdk-17-jdk openjdk-17-jre wget dnsutils
-
-RUN wget -O mongosh-2.2.2-linux-x64.tgz https://downloads.mongodb.com/compass/mongosh-2.2.2-linux-x64.tgz
-RUN tar -zxvf mongosh-2.2.2-linux-x64.tgz
-RUN chmod +x mongosh-2.2.2-linux-x64/bin/mongosh
-RUN cp mongosh-2.2.2-linux-x64/bin/mongosh /usr/local/bin/
-RUN cp mongosh-2.2.2-linux-x64/bin/mongosh_crypt_v1.so /usr/local/lib/
+RUN apt-get update && apt-get install -y openjdk-17-jdk wget dnsutils
 
 # Download and extract Tomcat
 RUN wget -O /tmp/tomcat.tar.gz https://dlcdn.apache.org/tomcat/tomcat-10/v${TOMCAT_VERSION}/bin/apache-tomcat-${TOMCAT_VERSION}.tar.gz && \
@@ -30,8 +19,9 @@ ENV PATH $CATALINA_HOME/bin:$PATH
 
 ENV SERVICE_KEY serviceA
 ENV SERVICE_NAME iPhone
-ENV MONGO_CONNSTR mongodb://adminuser:password123@host.docker.internal:32000/${SERVICE_KEY}
+ENV MONGO_CONNSTR mongodb://xxx:xxx@ipaddress:port/${SERVICE_KEY}?authSource=admin
 
+# Copy war to Tomcat
 COPY target/stsm-ci.war /opt/tomcat/webapps/
 
 # Expose Tomcat port

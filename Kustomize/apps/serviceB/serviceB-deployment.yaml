@@ -15,7 +15,7 @@ spec:
         app: serviceB
     spec:
       containers:
-      - image: farhanejaz/mtechphoneshop:debug
+      - image: farhanejaz/mtechphoneshop:latest
         name: serviceb
         env:
         - name: MONGO_CONNSTR
