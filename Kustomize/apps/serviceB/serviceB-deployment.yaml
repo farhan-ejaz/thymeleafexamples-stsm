@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  labels:
+    app: serviceB
+  name: serviceb
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: serviceB
+  template:
+    metadata:
+      labels:
+        app: serviceB
+    spec:
+      containers:
+      - image: farhanejaz/mtechphoneshop:debug
+        name: serviceb
+        env:
+        - name: MONGO_CONNSTR
+          valueFrom:
+            secretKeyRef:
+              name: serviceb-creds
+              key: mongoConnStr
+        - name: SERVICE_KEY
+          valueFrom:
+            configMapKeyRef:
+              name: serviceb-configmap
+              key: SERVICE_KEY
+        - name: SERVICE_NAME
+          valueFrom:
+            configMapKeyRef:
+              name: serviceb-configmap
+              key: SERVICE_NAME              

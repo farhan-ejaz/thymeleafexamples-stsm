@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  labels:
+    app: serviceC
+  name: servicec
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: serviceC
+  template:
+    metadata:
+      labels:
+        app: serviceC
+    spec:
+      containers:
+      - image: farhanejaz/mtechphoneshop:debug
+        name: servicec
+        env:
+        - name: MONGO_CONNSTR
+          valueFrom:
+            secretKeyRef:
+              name: servicec-creds
+              key: mongoConnStr
+        - name: SERVICE_KEY
+          valueFrom:
+            configMapKeyRef:
+              name: servicec-configmap
+              key: SERVICE_KEY
+        - name: SERVICE_NAME
+          valueFrom:
+            configMapKeyRef:
+              name: servicec-configmap
+              key: SERVICE_NAME              

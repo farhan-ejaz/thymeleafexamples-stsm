@@ -40,7 +40,7 @@ public class SpringBusinessConfig {
 
     // Nothing else to be configured here: component scanning will do everything needed
 	public @Bean MongoDatabaseFactory mongoDatabaseFactory() {
-		//System.out.println("CONNSTR--->" + connectionString);
+		System.out.println("CONNSTR--->" + connectionString);
 		return new SimpleMongoClientDatabaseFactory(connectionString);
 	}
 
