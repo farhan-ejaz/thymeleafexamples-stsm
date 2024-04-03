@@ -1,0 +1,17 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: servicec-ingress
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: "service-c.com"
+    http:
+      paths:
+      - pathType: Prefix
+        path: "/stsm-ci"
+        backend:
+          service:
+            name: servicec-cluster-svc
+            port:
+              number: 8080

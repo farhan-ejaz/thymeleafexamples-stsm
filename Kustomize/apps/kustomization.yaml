@@ -6,13 +6,18 @@ resources:
   - serviceA/serviceA-deployment.yaml
   - serviceA/serviceA-cluster-svc.yaml
   - serviceA/serviceA-nodeport-svc.yaml
+  - serviceA/serviceA-ingress.yaml
+  
   - serviceB/serviceB-secrets.yaml
   - serviceB/serviceB-configmap.yaml
   - serviceB/serviceB-deployment.yaml
   - serviceB/serviceB-cluster-svc.yaml
   - serviceB/serviceB-nodeport-svc.yaml
+  - serviceB/serviceB-ingress.yaml
+  
   - serviceC/serviceC-secrets.yaml
   - serviceC/serviceC-configmap.yaml
   - serviceC/serviceC-deployment.yaml
   - serviceC/serviceC-cluster-svc.yaml
   - serviceC/serviceC-nodeport-svc.yaml
+  - serviceC/serviceC-ingress.yaml

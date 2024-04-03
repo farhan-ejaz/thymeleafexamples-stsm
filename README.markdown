@@ -47,7 +47,8 @@ Pull Docker Image
 ## Ingress Controller (Prerequisite)
 Installed in default namespace
 
-      TODO
+       - kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.10.0/deploy/static/provider/cloud/deploy.yaml
+       -  kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.10.0/deploy/static/provider/baremetal/deploy.yaml
 
 ## Mongo (Kustomize)
      - cd Kustomize/mongo
