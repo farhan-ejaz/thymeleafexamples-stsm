@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  labels:
+    app: serviceA
+  name: servicea
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: serviceA
+  template:
+    metadata:
+      labels:
+        app: serviceA
+    spec:
+      containers:
+      - image: farhanejaz/mtechphoneshop:latest
+        name: servicea
+        env:
+        - name: MONGO_CONNSTR
+          valueFrom:
+            secretKeyRef:
+              name: servicea-creds
+              key: mongoConnStr
+        - name: SERVICE_KEY
+          valueFrom:
+            configMapKeyRef:
+              name: servicea-configmap
+              key: SERVICE_KEY
+        - name: SERVICE_NAME
+          valueFrom:
+            configMapKeyRef:
+              name: servicea-configmap
+              key: SERVICE_NAME              

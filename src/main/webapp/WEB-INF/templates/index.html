@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+  <head>
+    <title>Mobile Shop</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" type="text/css" media="all" href="../../css/stsm.css" th:href="@{/css/stsm.css}"/>
+  </head>
+
+  <body>
+
+    <div>
+      <img src="../../images/${{key}}.png" alt="APP logo" title="APP logo" width="400" height="300"
+           th:src="@{${'/images/' + key + '.png'}}" th:alt-title="|${name} search service|"/>           
+    </div>
+    
+    <div class="seedstarterlist" th:unless="${#lists.isEmpty(allPhones)}">
+         
+      <h2 th:text="|List of ${name} phones|"></h2>
+           
+      <table>
+        <thead>
+          <tr>
+            <th th:text="#{phone.model}">Model</th>
+            <th th:text="#{phone.price}">Price</th>
+            <th th:text="#{phone.features}">Features</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr th:each="sb : ${allPhones}">
+            <td th:text="${{sb.model}}">13/01/2011</td>
+            <td th:text="${{sb.price}}">0</td>
+            <td th:text="${{sb.features}}"></td>
+          </tr>
+        </tbody>
+      </table>
+      
+    </div>
+
+  </body>
+</html>

@@ -1,0 +1,17 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: serviceb-ingress
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: "service-b.com"
+    http:
+      paths:
+      - pathType: Prefix
+        path: "/stsm-ci"
+        backend:
+          service:
+            name: serviceb-cluster-svc
+            port:
+              number: 8080
