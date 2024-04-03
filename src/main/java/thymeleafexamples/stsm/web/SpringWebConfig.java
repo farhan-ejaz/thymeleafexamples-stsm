@@ -9,7 +9,6 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 import org.springframework.context.support.ResourceBundleMessageSource;
-import org.springframework.format.FormatterRegistry;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
@@ -17,9 +16,6 @@ import org.thymeleaf.spring6.SpringTemplateEngine;
 import org.thymeleaf.spring6.templateresolver.SpringResourceTemplateResolver;
 import org.thymeleaf.spring6.view.ThymeleafViewResolver;
 import org.thymeleaf.templatemode.TemplateMode;
-
-import thymeleafexamples.stsm.web.conversion.DateFormatter;
-import thymeleafexamples.stsm.web.conversion.VarietyFormatter;
 
 @Configuration
 @EnableWebMvc
@@ -72,23 +68,17 @@ public class SpringWebConfig implements WebMvcConfigurer, ApplicationContextAwar
 	 * thymeleafexamples.stsm.business.entities.Variety} and {@link java.util.Date}
 	 * in addition to the one registered by default
 	 */
-	@Override
-	public void addFormatters(final FormatterRegistry registry) {
-		WebMvcConfigurer.super.addFormatters(registry);
-		registry.addFormatter(varietyFormatter());
-		registry.addFormatter(dateFormatter());
-	}
-
-	@Bean
-	public VarietyFormatter varietyFormatter() {
-		return new VarietyFormatter();
-	}
-
-	@Bean
-	public DateFormatter dateFormatter() {
-		return new DateFormatter();
-	}
-
+	/*
+	 * @Override public void addFormatters(final FormatterRegistry registry) {
+	 * WebMvcConfigurer.super.addFormatters(registry);
+	 * registry.addFormatter(varietyFormatter());
+	 * registry.addFormatter(dateFormatter()); }
+	 * 
+	 * @Bean public VarietyFormatter varietyFormatter() { return new
+	 * VarietyFormatter(); }
+	 * 
+	 * @Bean public DateFormatter dateFormatter() { return new DateFormatter(); }
+	 */
 	/* **************************************************************** */
 	/* THYMELEAF-SPECIFIC ARTIFACTS */
 	/* TemplateResolver <- TemplateEngine <- ViewResolver */

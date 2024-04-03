@@ -19,7 +19,6 @@
  */
 package thymeleafexamples.stsm.web.controller;
 
-import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,12 +28,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import thymeleafexamples.stsm.business.entities.Feature;
 import thymeleafexamples.stsm.business.entities.Phone;
-import thymeleafexamples.stsm.business.entities.Type;
-import thymeleafexamples.stsm.business.entities.Variety;
 import thymeleafexamples.stsm.business.services.PhoneService;
-import thymeleafexamples.stsm.business.services.VarietyService;
 
 
 @Controller
@@ -43,9 +38,6 @@ public class SeedStarterMngController {
 
     private static final String INDEX_PAGE = "seedstartermng";
 
-	@Autowired
-    private VarietyService varietyService;
-    
     @Autowired
     private PhoneService phoneService;
 
@@ -57,23 +49,6 @@ public class SeedStarterMngController {
     
     public SeedStarterMngController() {
         super();
-    }
-
-    
-    
-    @ModelAttribute("allTypes")
-    public List<Type> populateTypes() {
-        return Arrays.asList(Type.ALL);
-    }
-    
-    @ModelAttribute("allFeatures")
-    public List<Feature> populateFeatures() {
-        return Arrays.asList(Feature.ALL);
-    }
-    
-    @ModelAttribute("allVarieties")
-    public List<Variety> populateVarieties() {
-        return this.varietyService.findAll();
     }
     
     @ModelAttribute("allSeedStarters")
