@@ -33,6 +33,10 @@ Push Docker image
      - docker login -u <your-user-name>
      - docker push farhanejaz/mtechphoneshop
 
+Fig: Docker image pushed 
+
+![Alt text](screenshots/dockerhub.PNG "image pushed")
+
 Pull Docker Image
 
       docker pull farhanejaz/mtechphoneshop
@@ -44,11 +48,20 @@ Pull Docker Image
 ## Create Namespace (Prerequisite)
       kubectl create ns 230928005
 
+Fig: describe namespace
+
+![Alt text](screenshots/namespace.PNG "describe namespace")
+
+
 ## Ingress Controller (Prerequisite)
-Installed in default namespace
+Installed in default namespace 'ingress-nginx'
 
        - kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.10.0/deploy/static/provider/cloud/deploy.yaml
        -  kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.10.0/deploy/static/provider/baremetal/deploy.yaml
+
+Fig: Ingress controller
+
+![Alt text](screenshots/ingress-controller.PNG "ingress controller")
 
 ## Mongo (Kustomize)
      - cd Kustomize/mongo
@@ -75,3 +88,19 @@ Example to deploy as ServiceA
 
       - cd Kustomize/apps
       - Kubectl apply -k . -n 230928005
+
+Fig: Mongo and Applications deployed to 230928005 namespace
+
+![Alt text](screenshots/apps.PNG "apps deployed")
+
+Fig: Screenshot Service A
+
+![Alt text](screenshots/service-a.PNG "service A")
+
+Fig: Screenshot Service B
+
+![Alt text](screenshots/service-b.PNG "service B")
+
+Fig: Screenshot Service B
+
+![Alt text](screenshots/service-c.PNG "service C")
