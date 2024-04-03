@@ -25,6 +25,7 @@ import java.util.Iterator;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
@@ -55,6 +56,12 @@ public class SeedStarterMngController {
     
     @Autowired
     private PhoneService phoneService;
+
+    @Value("${key}")
+    private String key;
+    
+    @Value("${name}")
+    private String name;
     
     public SeedStarterMngController() {
         super();
@@ -86,7 +93,17 @@ public class SeedStarterMngController {
         return this.phoneService.findAll();
     }
     
+    @ModelAttribute("key")
+    public String key() {
+    	System.out.println("===== KEY =====" + this.key);
+        return this.key;
+    }
     
+    @ModelAttribute("name")
+    public String name() {
+    	System.out.println("===== NAME =====" + this.name);
+        return this.name;
+    }
     
     @RequestMapping({"/","/seedstartermng"})
     public String showSeedstarters(final SeedStarter seedStarter) {

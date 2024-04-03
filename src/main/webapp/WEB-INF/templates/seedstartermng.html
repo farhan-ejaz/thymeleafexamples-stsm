@@ -11,14 +11,14 @@
   <body>
 
     <div>
-      <img src="../../images/logo.png" alt="STSM logo" title="STSM logo" 
-           th:src="@{/images/logo.png}" th:alt-title="#{title.application}"/>
+      <img src="../../images/${{key}}.png" alt="APP logo" title="APP logo" width="400" height="300"
+           th:src="@{${'/images/' + key + '.png'}}" th:alt-title="|${name} search service|"/>           
     </div>
     
     <div class="seedstarterlist" th:unless="${#lists.isEmpty(allSeedStarters)}">
-    
-      <h2 th:text="#{title.list}">List of Phones</h2>
-      
+         
+      <h2 th:text="|List of ${name} phones|"></h2>
+           
       <table>
         <thead>
           <tr>
