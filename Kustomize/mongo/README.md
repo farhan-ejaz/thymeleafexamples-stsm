@@ -3,5 +3,4 @@
 Kubernetes (Kustomize) manifests for mongoDB Deployment.
 
 Deploy MongoDB with the following command:
-kubectl apply -k .
-kubectl apply -k . --namespace=team2  
+kubectl apply -k . --namespace=230928005
